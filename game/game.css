@@ -1,0 +1,93 @@
+.header{
+   display: flex;
+   width: 30rem;
+   justify-content: space-between;
+   
+}
+
+.progress-bar{
+    width: 8rem;
+    height: 1rem;
+    border: 0.2rem solid #6EFF70 ;
+    margin-top: 0.5rem;
+    border-radius: 50px;
+    
+}
+#progress-bar-full{
+    height: 100%;
+    background-color: #6EFF70 ;
+    width: 0%;
+    
+}
+.question-contaier{
+    width: 30rem;
+    margin-bottom: 1rem;
+}
+.question-contaier h2{
+    font-size: 1.5rem;
+}
+
+.choice-container{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+.choise-text{
+    background-color: #0096FF;
+    border-radius: 5px;
+    padding: 0.8rem;
+    width: 25rem;
+    color: white;
+    font-size: 1rem;
+}
+.truefalse{
+    background-color: #0096FF;
+    border-radius: 5px;
+    padding: 1rem;
+    width: 30rem;
+    color: white;
+    font-size: 1.3rem;
+}
+.choice-container:hover{
+font-weight: bolder;
+cursor: pointer;
+box-shadow: 6.5px 13.0px 13.0px hsl(0deg 0% 0% / 0.30);
+transform: scale(1.02);
+transform: transform 100ms;
+}
+
+
+.check-btn button{
+font-size: 14px;
+padding: 10px 15px;
+}
+
+
+@media screen and (max-width: 768px){
+    
+    .header{
+        max-width: 80%;
+        margin-top: 3.5rem;
+
+     }
+     .question-contaier{
+         max-width: 80%;
+         
+     }
+     .question-contaier img{
+         margin-top: 1rem;
+         max-width: 20rem;
+     }
+     .choice-container:hover{
+        box-shadow:none;
+        }
+    #choise-text{
+        margin: auto;
+        max-width: 90%;
+    }
+    #truefalse{
+        max-width: 75%;
+        margin: auto;
+    }
+
+}

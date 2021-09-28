@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/result/result.css" />
+  </head>
+  <body onload="getResult()">
+    <div class="container">
+      <div id="home" class="flex-colum flex-center text-center">
+        <div class="header">
+          <h2 id="finalScore"></h2>
+          <h1 id="finalTitle"></h1>
+        </div>
+        <div class="body flex-center flex-colum">
+          <div class="loader"></div>
+          <img id="finalImg" />
+          <p id="finalMsg"></p>
+        </div>
+        <a id="play-again" class="btn" href="/game/game.html">Play Again</a>
+      </div>
+    </div>
+    <script src="/result/result.js"></script>
+  </body>
+</html>

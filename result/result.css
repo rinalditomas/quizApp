@@ -1,0 +1,23 @@
+#finalImg{
+    margin-bottom: 3rem;
+
+}
+#play-again{
+    margin-top: 3rem;
+}
+
+
+@media screen and (max-width: 768px){
+    #finalScore{
+        margin-top: 30%;
+    }
+
+  .body{
+      max-width: 80%;
+
+  }
+  #finalImg{
+      max-width: 100%;
+  }
+
+}

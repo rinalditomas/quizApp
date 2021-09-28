@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/game/game.css">
+</head>
+<body onload="getQuestions()">
+    <div class="container">
+            <div id='home' class="flex-colum flex-center">
+                <div class="header text-center">
+
+                    <div class="progress">
+                        <p id='progress-text'>Question 1 of 7</p>
+                        <div class="progress-bar">
+                            <div id="progress-bar-full"></div>
+                        </div>
+                    </div>
+
+                    <div class="points">
+                        <p>Score</p>
+                        <h2 id="score">0</h2>
+                    </div>
+                    
+                </div>
+                <div class="question-contaier flex-colum flex-center text-center">
+                    <h2 id='question'>Question</h2>
+                    <div class="loader"></div>
+                    <img id='question-image' src='' />
+                </div>
+                <div class="answers" id="answers"></div>
+                <div class="check-btn">
+                    <button onclick='checkAnswer()' id="check" class="btn">Check my answer</button>
+                </div>
+                
+            </div>
+    <script src="/game/game.js" ></script>
+</body>
+</html>
