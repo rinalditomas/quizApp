@@ -30,7 +30,7 @@ truty.addEventListener("click", (e) => {
     if (!acceptingAnswers) return;
     acceptingAnswers = false;
     const selectedChoise = e.target;
-    selectedChoise.style.backgroundColor = "orange";
+    selectedChoise.style.backgroundColor = "#D36135";
     selectedAnswer = selectedChoise.dataset["id"];
 });
 
@@ -45,7 +45,7 @@ falsy.addEventListener("click", (e) => {
   if (!acceptingAnswers) return;
   acceptingAnswers = false;
   const selectedChoise = e.target;
-  selectedChoise.style.backgroundColor = "orange";
+  selectedChoise.style.backgroundColor = "#D36135";
   selectedAnswer = selectedChoise.dataset["id"];
 });
 
@@ -71,7 +71,7 @@ const getQuestions = () => {
 };
 
 const getNewQuestion = async () => {
-//check if there are still available questions. If not, calculate the score in % and save it in localStorage
+//check if there are still available questions. If there are no more questions, calculate the score in % and save it in localStorage
     if (availableQuestions.length === counter) {
         let maxScore = 0;
         availableQuestions.forEach(
@@ -127,22 +127,18 @@ const getNewQuestion = async () => {
       //event listener to change the color and save the information  of the selected choice 
     
       div.addEventListener("click", (e) => {
-
-        if (question_type === "multiplechoice-multiple") {
-          const selectedChoise = e.target;
-          selectedChoise.style.backgroundColor = "orange";
-          selectedAnswer = [
-            ...selectedAnswer,
-            Number(selectedChoise.dataset["id"]),
-          ];
-        }
-        if (question_type === "multiplechoice-single") {
-          if (!acceptingAnswers) return;
-          acceptingAnswers = false;
-          const selectedChoise = e.target;
-          selectedChoise.style.backgroundColor = "orange";
-          selectedAnswer = selectedChoise.dataset["id"];
-        }
+        const selectedChoise = e.target;
+        if(selectedAnswer.includes(Number(selectedChoise.dataset["id"]))){
+            selectedChoise.style.backgroundColor = "#376996";
+            selectedAnswer = selectedAnswer.filter(ans => ans !== Number(selectedChoise.dataset["id"]))
+        }else{
+            selectedChoise.style.backgroundColor = "#EE964B";
+            selectedAnswer = [
+                ...selectedAnswer,
+                Number(selectedChoise.dataset["id"]),
+              ];
+            }
+        
       });
     });
   }
@@ -165,12 +161,12 @@ const checkAnswer = () => {
     
     const {question_type,correct_answer, points} = currentQuestion
     
-    //color the correct answers and add the points if the answer is correct
+    //color the correct answers and add the points if the selected option is equal to the answer
     if (question_type === "multiplechoice-multiple") {
 
         correct_answer.forEach((ans) => {
         let answer = document.getElementById(`${ans}`);
-        answer.style.backgroundColor = "#6EFF70";
+        answer.style.backgroundColor = "#5CAB7D";
         });
         if (arrayEquals(correct_answer, selectedAnswer.sort()))
         totalScore = totalScore + points;
@@ -178,7 +174,7 @@ const checkAnswer = () => {
 
     let correctAnswer = correct_answer;
     let answer = document.getElementById(correctAnswer);
-    answer.style.backgroundColor = "#6EFF70";
+    answer.style.backgroundColor = "#5CAB7D";
 
     if (question_type === "truefalse") {
       if (selectedAnswer === correct_answer.toString())
@@ -189,21 +185,13 @@ const checkAnswer = () => {
         totalScore = totalScore + points;
     }
   }
+  
     acceptingAnswers = true;
     checkBtn.disabled = true;
     scoreText.innerText = totalScore;
-  // color all the choices back to default color, hide the img, show the loader, add 1 to the counter to
-  //iterate throw availableQuestions array and trigger getNewQuestion function to go to the next question.
+
+  //wait three seconds before hiding the image, showing the loader and trigger the getNewQuestion function.
   setTimeout(() => {
-    if (question_type === "truefalse") {
-      truefalse.forEach((opt) => {
-        opt.style.backgroundColor = "#0096FF";
-      });
-    } else {
-      choices.forEach((choice) => {
-        choice.style.backgroundColor = "#0096FF";
-      });
-    }
     loader.style.display = "block";
     image.style.display = "none";
     counter++;
